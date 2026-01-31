@@ -1,13 +1,20 @@
 import type { Request, Response } from 'express';
 import path from 'path';
+import multer from "multer";
 import { HttpError } from '../utils/httpError';
 import { uploadOperation } from '../utils/cloudinary';
 
 function buildBaseUrl(req: Request) {
   return `${req.protocol}://${req.get('host')}`;
 }
+type UploadedFile = {
+  originalname: string;
+  mimetype: string;
+  path: string;
+};
 
-async function fileToAttachment(req: Request, file: Express.Multer.File) {
+async function fileToAttachment(req: Request, file: UploadedFile) {
+//async function fileToAttachment(req: Request, file: Express.Multer.File) {
   const ext = path.extname(file.originalname).toLowerCase();
   const isVideo = ['.mp4', '.mov', '.avi'].includes(ext) || file.mimetype.startsWith('video/');
   const isPdf = ext === '.pdf' || file.mimetype === 'application/pdf';
