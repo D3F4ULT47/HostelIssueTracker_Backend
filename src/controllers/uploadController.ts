@@ -37,7 +37,7 @@ async function fileToAttachment(req: Request, file: UploadedFile) {
 }
 
 export async function uploadAttachments(req: Request, res: Response) {
-  const files = (req.files as Express.Multer.File[]) ?? [];
+  const files = (req.files as UploadedFile[]) ?? [];
   if (!Array.isArray(files) || files.length === 0) {
     throw new HttpError(400, 'No files uploaded');
   }
@@ -57,7 +57,7 @@ export async function uploadProof(req: Request, res: Response) {
 }
 
 export async function uploadProofs(req: Request, res: Response) {
-  const files = (req.files as Express.Multer.File[]) ?? [];
+  const files = (req.files as UploadedFile[]) ?? [];
   if (!Array.isArray(files) || files.length === 0) {
     throw new HttpError(400, 'No files uploaded');
   }
