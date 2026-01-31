@@ -7,11 +7,11 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z.string().optional().default('development'),
-  PORT: z.coerce.number().optional().default(5000),
+  PORT: z.coerce.number().optional().default(3000),
   MONGODB_URI: z.string().min(1),
   JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().optional().default('7d'),
-  CORS_ORIGIN: z.string().optional().default('http://localhost:8080'),
+  CORS_ORIGIN: z.string().optional().default('https://hostelhub-front.netlify.app'),
   SEED_ADMIN: z
     .string()
     .optional()
