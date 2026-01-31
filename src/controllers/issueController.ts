@@ -184,10 +184,15 @@ export async function setResolutionProof(req: any, res: any) {
   if (!issue) throw new HttpError(404, 'Issue not found');
 
   // Add uploadedAt timestamp to each proof
-  const proofsWithTimestamp = proofs.map(proof => ({
-    ...proof,
+  const proofsWithTimestamp = proofs.map((proof) => ({
+    id: proof.id ?? crypto.randomUUID(),
+    name: proof.name ?? "attachment",
+    type: proof.type ?? "image",
+    url: proof.url ?? "",
+    thumbnail: proof.thumbnail,
     uploadedAt: new Date(),
   }));
+  
 
   issue.resolutionProofs = proofsWithTimestamp;
   if (typeof remark === 'string' && remark.trim()) {
