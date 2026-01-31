@@ -7,7 +7,7 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z.string().optional().default('development'),
-  PORT: z.coerce.number().optional().default(3000),
+  PORT: z.coerce.number(),
   MONGODB_URI: z.string().min(1),
   JWT_SECRET: z.string().min(16),
   JWT_EXPIRES_IN: z.string().optional().default('7d'),
