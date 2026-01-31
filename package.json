@@ -5,11 +5,12 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc -p tsconfig.json",
-    "start": "node src/index.ts",
-    "seed:staff": "ts-node src/scripts/seedStaff.ts"
-  },
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+  "build": "tsc -p tsconfig.json",
+  "start": "node dist/index.js",
+  "seed:staff": "ts-node src/scripts/seedStaff.ts"
+  } 
+,
   "dependencies": {
     "@types/string-similarity": "^4.0.2",
     "bcryptjs": "^2.4.3",
